@@ -213,6 +213,7 @@ def train_loop(args, labeled_loader, unlabeled_loader, test_loader,
             s_loss_labeled_new = F.cross_entropy(s_logits_labeled.detach(), targets)
             # dot_product = s_loss_l_new - s_loss_l_old
             # test
+            # see explanation on https://github.com/google-research/google-research/issues/536
             dot_product = s_loss_labeled_old - s_loss_labeled_new
             # moving_dot_product = moving_dot_product * 0.99 + dot_product * 0.01
             # dot_product = dot_product - moving_dot_product
